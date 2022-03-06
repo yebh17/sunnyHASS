@@ -1,0 +1,130 @@
+# Root configuration for home assistant
+# Secrets are defined in the file secrets.yaml
+
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Valhalla
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 10
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # Customization files
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+  # No login for watch/phone, see https://www.home-assistant.io/docs/authentication/provider
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+        - 127.0.0.1
+        - ::1
+      allow_bypass_login: true
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+
+# Enables configuration UI
+config:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Support person component
+person:
+
+# Support python scripts
+python_script:
+
+# System health info support
+system_health:
+
+# WOL for SpelTV
+wake_on_lan:
+
+# Allow mobile companion apps
+mobile_app:
+
+hacs:
+  token: !secret github_personal_access_token
+
+# Track device location with nmap. See secrets.yaml for gpslogger configuration.
+#device_tracker:
+#  - platform: nmap_tracker
+#    hosts:
+#      - 192.168.1.162
+#    home_interval: 5
+#    consider_home: 180
+
+# Example configuration.yaml entry
+notify:
+  - name: email
+    platform: sendgrid
+    api_key: !secret sendgrid_api_key
+    sender: !secret sender_email_address
+    recipient: !secret recipient_email_address
+
+# Lovelace UI
+lovelace:
+  mode: yaml #If wanted to edit dashboard manually, just comment this section
+  resources:
+    # https://github.com/thomasloven/lovelace-auto-entities/
+    - url: /local/auto-entities.js
+      type: module
+    # https://github.com/bramkragten/weather-card
+    - url: /local/weather-card.js
+      type: module
+    # https://github.com/thomasloven/lovelace-layout-card
+    - url: /local/layout-card.js
+      type: module
+    # https://github.com/Villhellm/lovelace-animated-background
+    - url: /local/animated-background.js
+      type: module
+
+    - url: /local/weatherbg-card.js
+      type: module
+
+    - url: /local/mini-media-player-bundle.js
+      type: module
+
+    - url: /local/vasttrafik-card.js
+      type: module
+
+    - url: /local/card-tools.js
+      type: module
+
+tts:
+  - platform: google_translate
+    service_name: google_say
+    base_url: http://192.168.1.139:8123
+
+# Västtrafik timetable
+sensor:
+  - platform: vasttrafik
+    key: !secret vasttrafik_key
+    secret: !secret vasttrafik_secret
+    departures:
+      - name: västtrafik
+        from: Akkas Gata
+        heading: Brunnsparken

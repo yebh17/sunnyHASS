@@ -1,0 +1,164 @@
+animated_background:
+  default_url: "https://cdn.flixel.com/flixel/ypy8bw9fgw1zv2b4htp2.hd.mp4"
+  included_users:
+    - admin
+  # This entity is just an example, use whatever entity you would like
+  entity: "weather.valhalla"
+  state_url:
+    "sunny":
+      - "https://cdn.flixel.com/flixel/hlhff0h8md4ev0kju5be.hd.mp4"
+      - "https://cdn.flixel.com/flixel/zjqsoc6ecqhntpl5vacs.hd.mp4"
+      - "https://cdn.flixel.com/flixel/jvw1avupguhfbo11betq.hd.mp4"
+      - "https://cdn.flixel.com/flixel/8cmeusxf3pkanai43djs.hd.mp4"
+      - "https://cdn.flixel.com/flixel/guwb10mfddctfvwioaex.hd.mp4"
+
+    "partlycloudy":
+      - "https://cdn.flixel.com/flixel/13e0s6coh6ayapvdyqnv.hd.mp4"
+      - "https://cdn.flixel.com/flixel/aorl3skmssy7udwopk22.hd.mp4"
+      - "https://cdn.flixel.com/flixel/qed6wvf2igukiioykg3r.hd.mp4"
+      - "https://cdn.flixel.com/flixel/3rd72eezaj6d23ahlo7y.hd.mp4"
+      - "https://cdn.flixel.com/flixel/9m11gd43m6qn3y93ntzp.hd.mp4"
+      - "https://cdn.flixel.com/flixel/hrkw2m8eofib9sk7t1v2.hd.mp4"
+
+    "cloudy":
+      - "https://cdn.flixel.com/flixel/13e0s6coh6ayapvdyqnv.hd.mp4"
+      - "https://cdn.flixel.com/flixel/aorl3skmssy7udwopk22.hd.mp4"
+      - "https://cdn.flixel.com/flixel/qed6wvf2igukiioykg3r.hd.mp4"
+      - "https://cdn.flixel.com/flixel/3rd72eezaj6d23ahlo7y.hd.mp4"
+      - "https://cdn.flixel.com/flixel/9m11gd43m6qn3y93ntzp.hd.mp4"
+      - "https://cdn.flixel.com/flixel/hrkw2m8eofib9sk7t1v2.hd.mp4"
+
+    "mostlycloudy":
+      - "https://cdn.flixel.com/flixel/e95h5cqyvhnrk4ytqt4q.hd.mp4"
+      - "https://cdn.flixel.com/flixel/l2bjw34wnusyf5q2qq3p.hd.mp4"
+      - "https://cdn.flixel.com/flixel/rrgta099ulami3zb9fd2.hd.mp4"
+
+    "clear-night":
+      - "https://cdn.flixel.com/flixel/x9dr8caygivq5secll7i.hd.mp4"
+      - "https://cdn.flixel.com/flixel/v26zyfd6yf0r33s46vpe.hd.mp4"
+      - "https://cdn.flixel.com/flixel/ypy8bw9fgw1zv2b4htp2.hd.mp4"
+      - "https://cdn.flixel.com/flixel/rosz2gi676xhkiw1ut6i.hd.mp4"
+
+    "fog":
+      - "https://cdn.flixel.com/flixel/vwqzlk4turo2449be9uf.hd.mp4"
+      - "https://cdn.flixel.com/flixel/5363uhabodwwrzgnq6vx.hd.mp4"
+
+    "rainy": "https://cdn.flixel.com/flixel/f0w23bd0enxur5ff0bxz.hd.mp4"
+
+title: Valhalla
+views:
+  - path: My home dashboard
+    title: Home
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.samsung_q60aa_65_tv
+
+      - type: grid
+        square: true
+        columns: 3
+        cards:
+          - type: picture-entity
+            entity: person.admin
+            aspect_ratio: "1"
+            show_name: false
+            image: /api/image/serve/61ea9716d54ed72d1b36245100143fd0/512x512
+          - type: picture-entity
+            entity: person.sunny
+            aspect_ratio: "1"
+            show_name: false
+            image: /api/image/serve/2e7425673ddc753504d9a6a9e3aed9a9/512x512
+
+      - type: entities
+        entities:
+          - light.bedroom
+          - light.entrance
+          - light.hall_sofa
+          - light.hall_tv
+          - light.kitchen_dining
+        title: Light
+
+      - type: entities
+        entities:
+          - sensor.canon_ts3300_series
+          - sensor.canon_ts3300_series_black
+          - sensor.canon_ts3300_series_color
+        title: Sensor
+
+      - type: weather-forecast
+        entity: weather.valhalla
+        show_forecast: true
+
+      - type: "custom:vasttrafik-card"
+        title: "Mot Akkasgatan och friedländersgata"
+        entities:
+          - id: sensor.akkasgatan_till_brunnsparken
+            delay: 3
+          - sensor.friedländersgatan_till_bäckebolköpcentrum
+
+  # Floorplan and my-iphone tab
+  - icon: mdi:home-assistant
+    id: overview
+    title: Overview
+    type: custom:masonry-layout
+    layout:
+      width: 280
+    cards:
+      # Floor plan
+      - type: picture-elements
+        image: /local/floorplan.png
+        elements:
+          - type: state-icon
+            entity: light.bedroom
+            tap_action:
+              action: toggle
+            style:
+              top: 6%
+              left: 51%
+      - type: entities
+        entities:
+          - entity: sensor.sunnys_iphone_activity
+            name: Activity
+          - entity: sensor.sunnys_iphone_average_active_pace
+            name: Average Active Pace
+          - entity: sensor.sunnys_iphone_bssid
+            name: BSSID
+          - entity: sensor.sunnys_iphone_battery_state
+            name: Battery State
+          - entity: sensor.sunnys_iphone_connection_type
+            name: Connection Type
+          - entity: sensor.sunnys_iphone_distance
+            name: Distance
+          - entity: sensor.sunnys_iphone_floors_ascended
+            name: Floors Ascended
+          - entity: sensor.sunnys_iphone_floors_descended
+            name: Floors Descended
+          - entity: binary_sensor.sunnys_iphone_focus
+            name: Focus
+          - entity: sensor.sunnys_iphone_geocoded_location
+            name: Geocoded Location
+          - entity: sensor.sunnys_iphone_last_update_trigger
+            name: Last Update Trigger
+          - entity: sensor.sunnys_iphone_sim_1
+            name: SIM 1
+          - entity: sensor.sunnys_iphone_sim_2
+            name: SIM 2
+          - entity: sensor.sunnys_iphone_ssid
+            name: SSID
+          - entity: sensor.sunnys_iphone_steps
+            name: Steps
+          - entity: sensor.sunnys_iphone_storage
+            name: Storage
+        title: Sunny’s iPhone
+
+  # Weather tab
+  - icon: mdi:weather-partly-rainy
+    id: weather
+    title: Weather
+    type: custom:masonry-layout
+    layout:
+      width: 365
+    cards:
+      # windy.com
+      - type: iframe
+        url: !secret windy_url
+        aspect_ratio: 100%

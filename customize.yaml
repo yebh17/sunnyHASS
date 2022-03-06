@@ -1,0 +1,111 @@
+switch.granen:
+  icon: mdi:pine-tree
+switch.istappar:
+  icon: mdi:string-lights
+switch.takfot:
+  icon: mdi:string-lights
+light.garageport:
+  icon: mdi:wall-sconce
+light.garagefonster:
+  icon: mdi:car-parking-lights
+light.material:
+  icon: mdi:lamp
+light.skrivare:
+  icon: mdi:lamp
+light.atervinning:
+  icon: mdi:lamp
+light.sexan:
+  icon: mdi:numeric-6-circle-outline
+light.sanggavel:
+  icon: mdi:wall-sconce-flat
+light.ormen:
+  icon: mdi:mushroom
+light.julorm:
+  icon: mdi:mushroom
+switch.juleljus:
+  icon: mdi:mushroom
+switch.altanjul:
+  icon: mdi:mushroom
+switch.entreljus:
+  icon: mdi:wall-sconce
+light.sovrumsgang:
+  icon: mdi:wall-sconce
+light.entrebuske:
+  icon: mdi:spotlight-beam
+light.altanbonsai:
+  icon: mdi:spotlight-beam
+light.altanfontan:
+  icon: mdi:spotlight-beam
+light.plantljus:
+  icon: mdi:flower
+light.garageplanta:
+  icon: mdi:flower
+switch.bioduk:
+  icon: mdi:projector-screen-outline
+switch.speltv:
+  icon: mdi:monitor
+light.skarm:
+  icon: mdi:monitor
+light.entrefonster:
+  icon: mdi:lamp
+light.koksfonster:
+  icon: mdi:lamp
+light.badrumsskap:
+  icon: mdi:led-strip-variant
+light.huego:
+  icon: mdi:alarm-light
+light.hallgo:
+  icon: mdi:alarm-light
+switch.ac:
+  icon: mdi:air-conditioner
+light.matbord_upp:
+  icon: mdi:alarm-light
+light.matbord_ned:
+  icon: mdi:wall-sconce-flat
+light.relax:
+  icon: mdi:ceiling-light
+light.hall:
+  icon: mdi:ceiling-light
+light.golvlampa:
+  icon: mdi:floor-lamp
+light.hornlampa:
+  icon: mdi:floor-lamp
+light.bordslampa:
+  icon: mdi:lamp
+light.linas_sang:
+  icon: mdi:wall-sconce
+group.hemma:
+  icon: mdi:security-home
+device_tracker.bengts_mobil:
+  friendly_name: Bengt
+  entity_picture: /local/bengt.jpg
+device_tracker.bengt_lan:
+  friendly_name: Bengts Wifi
+  entity_picture: /local/bengt.jpg
+device_tracker.marias_mobil:
+  friendly_name: Maria
+  entity_picture: /local/maria.jpg
+device_tracker.maria_lan:
+  friendly_name: Marias Wifi
+  entity_picture: /local/maria.jpg
+device_tracker.maltes_mobil:
+  friendly_name: Malte
+  entity_picture: /local/malte.jpg
+device_tracker.malte_lan:
+  friendly_name: Maltes Wifi
+  entity_picture: /local/malte.jpg
+device_tracker.linas_mobil:
+  friendly_name: Lina
+  entity_picture: /local/lina.jpg
+device_tracker.lina_lan:
+  friendly_name: Linas Wifi
+  entity_picture: /local/lina.jpg
+sensor.energy:
+  friendly_name: "Energiförbrukning"
+sensor.energy_daily:
+  friendly_name: "Daglig energiförbrukning"
+sensor.energy_monthly:
+  friendly_name: "Månatlig energiförbrukning"
+sensor.energy_yearly:
+  friendly_name: "Årlig energiförbrukning"
+# Use wall-sconce-round-variant wall-sconce-flat-variant after updating to newer hassio with newer icons
