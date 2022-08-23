@@ -1,5 +1,0 @@
-# Home group tracker
-home:
-  name: home_users
-  entities:
-    - device_tracker.sunnys_iphone

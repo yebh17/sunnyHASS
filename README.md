@@ -1,1 +1,0 @@
-# Sunny's Home-Assistant
